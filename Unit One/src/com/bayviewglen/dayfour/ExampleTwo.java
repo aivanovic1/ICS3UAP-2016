@@ -17,11 +17,12 @@ public class ExampleTwo {
 		
 		// We are explicitly casting twice
 		// Java performs an implicit cast
+		// If you do it is explicit, if java does it it is implicit
 		
 		System.out.println(averageAge);
 		
-		// Narrowing Conversion less precision double -> int
-		// Widening Conversion more precision int -> double
+		// Narrowing Conversion: less precision double -> int
+		// Widening Conversion: more precision int -> double
 
 	}
 
