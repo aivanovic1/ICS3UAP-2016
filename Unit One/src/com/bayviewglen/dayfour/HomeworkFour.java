@@ -3,11 +3,12 @@ package com.bayviewglen.dayfour;
 public class HomeworkFour {
 
 	public static void main(String[] args) {
+		
 		double vInitial, a, t;
 		
-		vInitial = 23.2;
-		a = 4.1;
-		t = 5.3;
+		vInitial = 5.5;
+		a = 4.3;
+		t = 3.2;
 		
 		double vFinal = vInitial + a*t;
 		
