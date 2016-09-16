@@ -15,6 +15,8 @@ public class HomeworkThree {
 		digit5 = (num1/10)%10;
 		
 		System.out.println("The product second digit ("+ digit2 + ") and fifth digit (" + digit5 + ") is: " + digit2 * digit5);
+
+		scan.close();
 	}
 
 }

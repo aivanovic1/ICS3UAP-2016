@@ -19,6 +19,7 @@ public class HomeworkFour {
 		
 		System.out.println("The value of the final velocity is: " + vFinal + "m/s");
 
+		scan.close();
 	}
 
 }

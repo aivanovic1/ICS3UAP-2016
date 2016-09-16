@@ -14,7 +14,7 @@ public class HomeworkOne {
 						
 		System.out.println("This is the value of x: " + x + "\nThis is the value of x^2: " + x*x);
 				
-
+		scan.close();
 			
 	}
 

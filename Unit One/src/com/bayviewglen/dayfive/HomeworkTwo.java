@@ -16,6 +16,8 @@ public class HomeworkTwo {
 		
 		System.out.println("The student recieved a percentage of " + percentage + "%.");
 	
+		scan.close();
+	
 	}
 
 }
