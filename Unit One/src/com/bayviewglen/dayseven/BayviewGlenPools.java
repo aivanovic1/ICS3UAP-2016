@@ -81,6 +81,11 @@ public class BayviewGlenPools {
 		areaSide = ((lengthPool * depthDeep * widthPool) - ((lengthShallow * diffHeight * widthPool) + ((Math.sqrt((Math.pow(lengthShallow, 2) - Math.pow(diffHeight, 2))) * diffHeight * widthPool) + (lengthTransition * diffHeight * widthPool)/2)));
 		surfaceArea = areaBottom + areaSideDeep + areaSideShallow + (areaSide*2);
 		
+		//CHECK//
+		
+		//System.out.println();
+		//System.out.println(areaBottom + ", " + areaSideDeep + ", " + areaSideShallow + ", " + areaSide);
+		
 		System.out.println();
 		System.out.printf("The amount of liner needed to cover the pool is: %.3f m^2", surfaceArea);
 	
