@@ -309,7 +309,7 @@ public class CrossCountryAssignment {
 		System.out.println(
 				"--------------------+---------------------+-------------------------+-----------------------+------------------+");
 
-		scan.close();
+		scan.close();	// test
 	}
 
 }
