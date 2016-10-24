@@ -11,7 +11,7 @@ public class HomeworkSix {
 		momentum = mass*velocity;
 		
 		System.out.println("The momentum of the object is: " + momentum + "kg*m/s");
-
+		
 	}
 
 }
