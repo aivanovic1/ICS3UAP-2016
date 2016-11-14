@@ -22,7 +22,7 @@ public class HangmanAssignment {
 	private static boolean isGuessed = false;
 	private static int roundsPlayed = 1;
 	private static boolean suddenDeath = false;
-	
+
 	public static void playGame(){
 		
 		playerOne = enterPlayerName("One");
@@ -49,9 +49,12 @@ public class HangmanAssignment {
 			
 			while (!isGuessed){
 				int playerOption = playerOption(currentPlayerName, playerPlaying);
+				
 				if (playerOption == 1) solve(currentPlayerName, playerPlaying, false);
 				else guessCharacter(currentPlayerName, playerPlaying);
-			
+				
+				if (isGuessed) break;
+				
 				if (playerPlaying == 1){
 					playerOneCountGuesses++;
 					if (playerOneCountGuesses == MAX_GUESSES){
@@ -81,7 +84,7 @@ public class HangmanAssignment {
 					suddenDeath = true;
 				}
 				else {
-					suddenDeath = !suddenDeath;
+					suddenDeath = false;
 					printFinalScore();
 				}
 			}
@@ -211,10 +214,12 @@ public class HangmanAssignment {
 			
 		if (phrase.equals(solution)){
 			System.out.println("Congratulations, " + player + ", you are correct!");
-			printAndAdjustScore(playerNumber);
+			adjustScore(playerNumber);
+			printScore();
 			isGuessed = true;
 		}
 		else System.out.println("Sorry, " + player + ", that guess was incorrect.");
+		
 		return phrase.equals(solution);
 	}
 	
@@ -274,14 +279,15 @@ public class HangmanAssignment {
 		
 		if (blankedPhrase.indexOf("_") == -1){
 			System.out.println("Congratulations, " + player + ", you are correct!");
-			printAndAdjustScore(playerNumber);
+			adjustScore(playerNumber);
+			printScore();
 			isGuessed = true;
 		}
 		
 		return charGuess;
 	}
 	
-	private static void printAndAdjustScore(int playerNumber){
+	private static void adjustScore(int playerNumber){
 		int score = 0;
 		
 		if (playerNumber == 1){
@@ -292,12 +298,6 @@ public class HangmanAssignment {
 			score = MAX_GUESSES - playerTwoCountGuesses + 1;
 			playerTwoScore += score;
 		}
-		
-		System.out.println();
-		System.out.println("|---CURRENT-SCORES---|");
-		System.out.println(playerOne + ": " + playerOneScore);
-		System.out.println(playerTwo + ": " + playerTwoScore);
-		System.out.println("|--------------------|\n");
 	}
 	
 	private static void printScore(){
@@ -309,11 +309,13 @@ public class HangmanAssignment {
 	}
 	
 	private static void printFinalScore(){
-		System.out.println();
+		/*System.out.println();
 		System.out.println("|---FINAL-SCORES---|");
 		System.out.printf("%s: %d%n",playerOne, playerOneScore);
 		System.out.printf("%s: %d%n",playerTwo, playerTwoScore);
-		System.out.println("|------------------|\n");
+		System.out.println("|------------------|\n"); */
+		
+		System.out.println("\n|---FINAL-RESULTS---|");
 		
 		if (playerOneScore > playerTwoScore){
 			if (playerOneScore > playerTwoScore + 10) System.out.println(playerOne + ", you crushed " + playerTwo + "!");
