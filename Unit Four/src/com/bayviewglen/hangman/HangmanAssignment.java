@@ -22,7 +22,10 @@ public class HangmanAssignment {
 	private static boolean isGuessed = false;
 	private static int roundsPlayed = 1;
 	private static boolean suddenDeath = false;
-
+	
+	/**
+	 * Main Driver (incorporates all other functions and pieces them together to run the game).	
+	 */
 	public static void playGame(){
 		
 		playerOne = enterPlayerName("One");
@@ -74,7 +77,7 @@ public class HangmanAssignment {
 			}
 			
 			if (playerPlaying == 1) playerPlaying = 2;
-			else{
+			else {
 				roundsPlayed++;
 				playerPlaying = 1;
 			}
@@ -91,6 +94,12 @@ public class HangmanAssignment {
 		}
 	}
 	
+	/**
+	 * Prompts, validates, and returns name of player.
+	 * 
+	 * @param playerNumber
+	 * @return
+	 */
 	private static String enterPlayerName(String playerNumber){
 		Scanner scan = new Scanner(System.in);
 		while (true){
@@ -105,6 +114,12 @@ public class HangmanAssignment {
 		}	
 	}
 	
+	/**
+	 * Prompts, validates, and returns the phrase entered by the player which is not guessing.
+	 * 
+	 * @param playerNumber
+	 * @return
+	 */
 	private static String playerPhrase(int playerNumber){
 		Scanner scan = new Scanner(System.in);
 		boolean invalidCharFound = true;
@@ -134,10 +149,18 @@ public class HangmanAssignment {
 		return phrase;
 	}
 	
+	/**
+	 * Prints a lot of blank lines to hide the phrase entered.
+	 */
 	private static void hideEntry(){
 		for (int i = 0; i < BLANKS; i++) System.out.println();
 	}
 	
+	/**
+	 * Returns the phrase entered except it is blanked (underscores and slashes).
+	 * 
+	 * @return
+	 */
 	private static String phraseToBlank(){
 		String blankedPhrase = "";
 		String charIndex = "";
@@ -149,6 +172,9 @@ public class HangmanAssignment {
 		return blankedPhrase;
 	}
 	
+	/**
+	 * Prints the blanked phrase with the correct spacing.
+	 */
 	private static void printBlankedPhrase(){
 		for (int i = 0; i < blankedPhrase.length(); i++){
 			System.out.printf("%c ", blankedPhrase.charAt(i));
@@ -156,6 +182,11 @@ public class HangmanAssignment {
 		System.out.println();
 	}
 	
+	/**
+	 * Assigns "_" to a used character (changes the variable).
+	 * 
+	 * @param charGuess
+	 */
 	private static void removeUsedCharacter(char charGuess){
 		int index = choiceOfCharacters.indexOf(String.valueOf(charGuess));
 		if (index > -1){
@@ -163,6 +194,13 @@ public class HangmanAssignment {
 		}
 	}
 	
+	/**
+	 * Prompts, validates, and returns the selected playing option (1 or 2).
+	 * 
+	 * @param player
+	 * @param playerNumber
+	 * @return
+	 */
 	private static int playerOption(String player, int playerNumber){
 		Scanner scan = new Scanner(System.in);
 		if (playerNumber == 1) System.out.print(player + ", you have used " + playerOneCountGuesses + " guesses. Would you like to (1) solve or (2) guess a character: ");
@@ -183,6 +221,14 @@ public class HangmanAssignment {
 		}	
 	}
 	
+	/**
+	 * Prompts, validates, checks whether or not it is correct, and adjusts the score (Option 1 - Solving the phrase).
+	 * 
+	 * @param player
+	 * @param playerNumber
+	 * @param finalSolution
+	 * @return
+	 */
 	private static boolean solve(String player, int playerNumber, boolean finalSolution){
 		Scanner scan = new Scanner(System.in);
 		boolean invalidCharFound = true;
@@ -212,7 +258,7 @@ public class HangmanAssignment {
 			
 			//scan.close();
 			
-		if (phrase.equals(solution)){
+		if (phrase.equals(solution) && !finalSolution){
 			System.out.println("Congratulations, " + player + ", you are correct!");
 			adjustScore(playerNumber);
 			printScore();
@@ -223,6 +269,13 @@ public class HangmanAssignment {
 		return phrase.equals(solution);
 	}
 	
+	/**
+	 * Prompts, validates, checks whether or not it is correct, and adjusts score (Option 2 - Guessing a single character).
+	 * 
+	 * @param player
+	 * @param playerNumber
+	 * @return
+	 */
 	private static String guessCharacter(String player, int playerNumber){
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Unused characters: ");
@@ -287,6 +340,11 @@ public class HangmanAssignment {
 		return charGuess;
 	}
 	
+	/**
+	 * Adjusts the player score.
+	 * 
+	 * @param playerNumber
+	 */
 	private static void adjustScore(int playerNumber){
 		int score = 0;
 		
@@ -300,6 +358,9 @@ public class HangmanAssignment {
 		}
 	}
 	
+	/**
+	 * Prints the current score of the players to the console.
+	 */
 	private static void printScore(){
 		System.out.println();
 		System.out.println("|---CURRENT-SCORES---|");
@@ -308,6 +369,9 @@ public class HangmanAssignment {
 		System.out.println("|--------------------|\n");
 	}
 	
+	/**
+	 * Prints the final result (who won).
+	 */
 	private static void printFinalScore(){
 		/*System.out.println();
 		System.out.println("|---FINAL-SCORES---|");
@@ -330,6 +394,9 @@ public class HangmanAssignment {
 		}
 	}
 	
+	/**
+	 * Resets all the necessary variables to play another game (i.e. score, guesses, etc.).
+	 */
 	private static void setupNewGame(){
 		playerOneCountGuesses = 0;
 		playerTwoCountGuesses = 0;		
@@ -339,6 +406,11 @@ public class HangmanAssignment {
 		choiceOfCharacters = VALID_CHARACTERS_NOSPACE;
 	}
 	
+	/**
+	 * Plays the game (calls the driver function).
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		HangmanAssignment.playGame();
 	}
