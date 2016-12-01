@@ -22,6 +22,12 @@ public class ExampleOne {
 		}
 		System.out.println("*");
 		
+		int count = 0;
+		String str1 = "ABChello";
+		for (int i = 0; i < str1.length()-4; i++){
+			if (str1.substring(i,i+5).equals("hello")) count++;
+		}
+		System.out.println(count);
 	}
 
 }
